@@ -37,8 +37,8 @@ jspm_packages
 .node_repl_history
 
 # IDEs and editors
-/.idea
-/.vscode
+.idea/
+.vscode
 .project
 .classpath
 .c9/
