@@ -2,7 +2,7 @@ import {NgModule, ApplicationRef} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent}  from './app.component';
-import {createNewHosts, removeNgStyles} from "@angularclass/hmr";
+import {createNewHosts, removeNgStyles} from '@angularclass/hmr';
 
 @NgModule({
   imports: [BrowserModule],
