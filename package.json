@@ -6,7 +6,7 @@
     "build": "rimraf dist && webpack --progress --profile --bail",
     "clean": "rimraf node_modules dist && npm cache clean",
     "lint": "tslint --force \"client/**/*.ts\"",
-    "server": "webpack-dashboard -- webpack-dev-server --inline --progress --port 8080",
+    "server": "webpack-dev-server --config webpack.config.client.js --inline --progress --port 8080",
     "start": "npm run server",
     "start:hmr": "npm run server -- --hot"
   },

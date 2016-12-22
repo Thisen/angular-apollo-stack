@@ -22,7 +22,7 @@ var isProd = ENV === 'build';
 module.exports = function makeWebpackConfig() {
   /**
    * Config
-   * Reference: http://webpack.github.io/docs/configuration.html
+   * Reference: http://webpa ck.github.io/docs/configuration.html
    * This is the object where all configuration gets set
    */
   var config = {};
