@@ -16,11 +16,11 @@ module.exports = {
   target: "node",
   output: {
     filename: "server.js",
-    path: "dist",
+    path: "build/server",
     libraryTarget: "commonjs"
   },
   resolve: {
-    extensions: ["", ".ts", ".js", ".json"]
+    extensions: [".ts", ".js", ".json"]
   },
   externals: [
     nodeModules
