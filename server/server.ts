@@ -1,24 +1,36 @@
-import * as Koa from 'koa';
-import * as bodyParser from 'koa-bodyparser';
-import * as Router from 'koa-router';
-import { graphqlKoa } from 'graphql-server-koa';
+import * as bodyParser from 'body-parser';
+import * as express from 'express';
+import * as http from 'http';
 
-const myGraphQLSchema = {};
+import { AppConfig } from './services/appConfig.service';
+import { MongoConnector } from './connectors/mongodb/mongoConnector';
+import { GraphQLServer } from './graphql';
 
-const app = new Koa();
-const router = new Router();
-const PORT = 3000;
+export class Server {
 
+  public expressServer: express.Express;
 
-app.use(bodyParser());
+  private readonly appConfig: AppConfig;
 
-//router.post('/graphql', graphqlKoa({schema: myGraphQLSchema}));
+  /**
+   * Server entry point.
+   */
+  constructor() {
+    this.appConfig = new AppConfig();
+    this.expressServer = express();
+    this.setupMiddleware();
 
-router.get('/', () => {
-  this.body = 'hello world';
-});
+    const mongoConnector = new MongoConnector(this.appConfig.mongoDbUrl);
+    mongoConnector.mongooseConnection
+      .then(() => {
+        const graphqlServer = new GraphQLServer(this.expressServer, this.appConfig.graphQLPort); // tslint:disable-line
+      });
+  }
 
+  private setupMiddleware(): void {
+    this.expressServer.use(bodyParser.urlencoded({extended: true}));
+    this.expressServer.use(bodyParser.json());
+  }
+}
 
-app.use(router.routes());
-app.use(router.allowedMethods());
-app.listen(PORT);
+export const server = http.createServer(new Server().expressServer);
