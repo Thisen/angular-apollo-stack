@@ -1,7 +1,7 @@
 {
-  "name": "kama-stack",
+  "name": "angular-apollo-stack",
   "version": "1.0.0-alpha",
-  "description": "Fullstack JavaScript Web Application using Koa, Angular 2, MongoDB and Apollo",
+  "description": "Fullstack JavaScript Web Application using Angular and Apollo",
   "scripts": {
     "build:client": "rimraf dist/client && webpack --config ./config/webpack.config.client.js --progress --profile --bail",
     "build:server": "webpack --config ./config/webpack.config.server.js --progress",
