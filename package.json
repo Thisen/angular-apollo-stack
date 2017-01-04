@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Thisen/kama-stack"
+    "url": "https://github.com/Thisen/angular-apollo-stack"
   },
   "author": "Mathis Møller <https://github.com/Thisen>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Thisen/kama-stack/issues"
+    "url": "https://github.com/Thisen/angular-apollo-stack/issues"
   },
-  "homepage": "https://github.com/Thisen/kama-stack",
+  "homepage": "https://github.com/Thisen/angular-apollo-stack",
   "dependencies": {
     "@angular/common": "^2.4.0",
     "@angular/compiler": "^2.4.0",
