@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "6.1"
+install:
+  - npm install
+services: mongodb
+script:
+  - npm run build:server
+  - npm run build:client
