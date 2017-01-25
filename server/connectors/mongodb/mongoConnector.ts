@@ -13,7 +13,7 @@ export class MongoConnector {
       });
   }
 
-  private log(message: string, ...args: Array<any>): void {
+  private log(message: string, ...args: any[]): void {
     console.log(`MongoConnector: ${message}`, ...args);
   }
 }

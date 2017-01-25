@@ -12,9 +12,9 @@ export class AppConfig {
     this.graphQLPort = process.env.PORT || 8080;
 
     if (this.isProduction) {
-      this.mongoDbUrl = process.env.ROM_DB_PROD;
+      this.mongoDbUrl = process.env.MONGO_URL_PROD;
     } else {
-      this.mongoDbUrl = process.env.ROM_DB_TEST;
+      this.mongoDbUrl = 'mongodb://localhost:27017/';
     }
 
     if (!this.mongoDbUrl) {

@@ -1,10 +1,14 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import * as http from 'http';
+import * as mongoose from 'mongoose';
 
 import { AppConfig } from './services/appConfig.service';
 import { MongoConnector } from './connectors/mongodb/mongoConnector';
 import { GraphQLServer } from './graphql';
+
+// Set mongoose promise implementation to native Node promises
+(mongoose as any).Promise = global.Promise;
 
 export class Server {
 
