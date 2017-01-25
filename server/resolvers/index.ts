@@ -14,6 +14,6 @@ export class Resolvers {
     return {
       Query,
       Mutation,
-    }
+    };
   }
 }
