@@ -5,8 +5,6 @@ export interface IUserArgument {
 }
 
 type UserResolver = (root: Object, arg: IUserArgument) => Promise<IUser>;
-export const getUser: UserResolver = (_, { id }) => {
-  console.log(_);
-  console.log(id);
+export const getUser: UserResolver = (root, { id }) => {
   return User.findById(id);
 };

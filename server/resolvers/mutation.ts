@@ -1,13 +1,11 @@
 import { IUser, User } from './../models/';
 
-export interface ICreateUserArgument {
-  name: string;
+export interface IInputUserArgument {
+  user: IUser;
 }
 
-type CreateUserResolver = (root: Object, arg: ICreateUserArgument) => Promise<IUser>;
-export const createUser: CreateUserResolver = (root, { name }) => {
-  console.log('Resolver:' + root);
-  console.log('Resolver: ' + name);
-  return User.create({ name });
+type CreateUserResolver = (root: any, arg: IInputUserArgument) => Promise<IUser>;
+export const createUser: CreateUserResolver = (root, { user }) => {
+  console.log(user);
+  return User.create(user);
 };
-
