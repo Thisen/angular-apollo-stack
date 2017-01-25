@@ -3,9 +3,9 @@ import * as express from 'express';
 import * as http from 'http';
 import * as mongoose from 'mongoose';
 
-import { AppConfig } from './services/appConfig.service';
 import { MongoConnector } from './connectors/mongodb/mongoConnector';
 import { GraphQLServer } from './graphql';
+import { AppConfig } from './services/appConfig.service';
 
 // Set mongoose promise implementation to native Node promises
 (mongoose as any).Promise = global.Promise;

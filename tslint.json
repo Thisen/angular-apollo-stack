@@ -23,8 +23,7 @@
       true,
       "attribute",
       [
-        "dir-prefix1",
-        "dir-prefix2"
+        "dir-uce"
       ],
       "camelCase"
     ],
@@ -32,8 +31,7 @@
       true,
       "element",
       [
-        "cmp-prefix1",
-        "cmp-prefix2"
+        "cmp-uce"
       ],
       "kebab-case"
     ],
