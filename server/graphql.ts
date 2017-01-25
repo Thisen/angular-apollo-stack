@@ -1,8 +1,9 @@
-import { Resolvers } from './resolvers';
+
 import { Express } from 'express';
 import { graphiqlExpress, graphqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 
+import { Resolvers } from './resolvers';
 import { aggregatedSchemas } from './schemas/';
 
 export class GraphQLServer {
@@ -13,7 +14,7 @@ export class GraphQLServer {
       typeDefs: aggregatedSchemas,
       resolvers: resolvers.getAll(),
       resolverValidationOptions: {
-        requireResolversForNonScalar: false
+        requireResolversForNonScalar: false,
       },
     });
 

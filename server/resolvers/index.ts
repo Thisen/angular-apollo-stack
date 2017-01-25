@@ -4,16 +4,16 @@ import { getUser } from './query';
 export class Resolvers {
   public getAll() {
     const Query = {
-      getUser
+      getUser,
     };
 
     const Mutation = {
-      createUser
+      createUser,
     };
 
     return {
       Query,
-      Mutation
+      Mutation,
     }
   }
 }

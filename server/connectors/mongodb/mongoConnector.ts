@@ -1,7 +1,4 @@
 import * as Mongoose from 'mongoose';
-import { IUserModel, UserSchema } from './';
-
-export const User = Mongoose.model<IUserModel>('User', UserSchema);
 
 export class MongoConnector {
   public readonly mongooseConnection: Promise<void>;

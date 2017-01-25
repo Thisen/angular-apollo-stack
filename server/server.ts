@@ -37,4 +37,4 @@ export class Server {
   }
 }
 
-export const server = http.createServer(new Server().expressServer);
+export const server = new Server();
