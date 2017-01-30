@@ -6,6 +6,7 @@ export class AppConfig {
   public readonly graphQLPort: number;
 
   constructor() {
+
     this.isProduction = process.env.NODE_ENV === 'prod';
     this.isDevelopment = !this.isProduction;
 
@@ -14,7 +15,7 @@ export class AppConfig {
     if (this.isProduction) {
       this.mongoDbUrl = process.env.MONGO_URL_PROD;
     } else {
-      this.mongoDbUrl = 'mongodb://localhost:27017/';
+      this.mongoDbUrl = process.env.MONGO_URL_TEST;
     }
 
     if (!this.mongoDbUrl) {

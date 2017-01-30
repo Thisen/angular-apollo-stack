@@ -1,4 +1,5 @@
 import * as bodyParser from 'body-parser';
+import * as dotenv from 'dotenv';
 import * as express from 'express';
 import * as http from 'http';
 import * as mongoose from 'mongoose';
@@ -20,6 +21,7 @@ export class Server {
    * Server entry point.
    */
   constructor() {
+    dotenv.load();
     this.appConfig = new AppConfig();
     this.expressServer = express();
     this.setupMiddleware();
