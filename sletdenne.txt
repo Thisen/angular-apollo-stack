@@ -1,2 +1,1 @@
-slet filen.
-det er nyt
+Filen er tom
