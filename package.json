@@ -3,11 +3,11 @@
   "version": "1.0.0-alpha",
   "description": "Fullstack JavaScript Web Application using Angular and Apollo",
   "scripts": {
-    "build:client": "rimraf dist/client && webpack --config webpack.config.client.js --progress --profile --bail",
+    "build:client": "rimraf dist/client && webpack --config ./config/webpack.config.client.js --progress --profile --bail",
     "build:server": "rimraf dist/server && webpack --config ./config/webpack.config.server.js --progress",
     "clean": "rimraf node_modules dist && npm cache clean",
     "lint": "tslint --force \"server/**/*.ts\" \"client/**/*.ts\"",
-    "server": "webpack-dev-server --config ./config/webpack.config.client.js --inline --progress --port 8080",
+    "server": "webpack-dev-server --config ./config/webpack.config.client.js --inline --progress --bail --port 8080",
     "start": "npm run server",
     "start:hmr": "npm run server -- --hot"
   },

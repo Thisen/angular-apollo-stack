@@ -8,21 +8,21 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-var DashboardPlugin = require('webpack-dashboard/plugin');
 
 /**
  * Env
  * Get npm lifecycle event to identify the environment
  */
 var ENV = process.env.npm_lifecycle_event;
+console.log(process.env.npm_lifecycle_event);
 var isTestWatch = ENV === 'test-watch';
 var isTest = ENV === 'test' || isTestWatch;
-var isProd = ENV === 'build';
+var isProd = ENV === 'build:client';
 
 module.exports = function makeWebpackConfig() {
   /**
    * Config
-   * Reference: http://webpa ck.github.io/docs/configuration.html
+   * Reference: http://webpack.github.io/docs/configuration.html
    * This is the object where all configuration gets set
    */
   var config = {};
@@ -47,21 +47,21 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/configuration.html#entry
    */
   config.entry = isTest ? {} : {
-      'polyfills': './client/polyfills.ts',
-      'vendor': './client/vendor.ts',
-      'app': './client/main.ts' // our angular app
-    };
+    'polyfills': './client/polyfills.ts',
+    'vendor': './client/vendor.ts',
+    'app': './client/main.ts' // our angular app
+  };
 
   /**
    * Output
    * Reference: http://webpack.github.io/docs/configuration.html#output
    */
   config.output = isTest ? {} : {
-      path: root('/dist/client'),
-      publicPath: isProd ? '/' : 'http://localhost:8080/',
-      filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
-      chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
-    };
+    path: root('dist'),
+    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
+    chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
+  };
 
   /**
    * Resolve
@@ -166,15 +166,14 @@ module.exports = function makeWebpackConfig() {
     }),
 
     // Workaround needed for angular 2 angular/angular#11580
-    new webpack.ContextReplacementPlugin(
-      // The (\\|\/) piece accounts for path separators in *nix and Windows
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      root('./client') // location of your client
-    ),
+      new webpack.ContextReplacementPlugin(
+        // The (\\|\/) piece accounts for path separators in *nix and Windows
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        root('./client') // location of your client
+      ),
 
     // Tslint configuration for webpack 2
     new webpack.LoaderOptionsPlugin({
-      debug: true,
       options: {
         /**
          * Apply the tslint loader as pre/postLoader
@@ -206,13 +205,8 @@ module.exports = function makeWebpackConfig() {
     })
   ];
 
-  if (!isTest && !isProd) {
-    config.plugins.push(new DashboardPlugin());
-  }
-
   if (!isTest && !isTestWatch) {
     config.plugins.push(
-
       // Generate common chunks if necessary
       // Reference: https://webpack.github.io/docs/code-splitting.html
       // Reference: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
@@ -223,7 +217,7 @@ module.exports = function makeWebpackConfig() {
       // Inject script and link tags into html files
       // Reference: https://github.com/ampedandwired/html-webpack-plugin
       new HtmlWebpackPlugin({
-        template: 'client/public/index.html',
+        template: './client/public/index.html',
         chunksSortMode: 'dependency'
       }),
 
@@ -265,8 +259,8 @@ module.exports = function makeWebpackConfig() {
   config.devServer = {
     contentBase: './client/public',
     historyApiFallback: true,
-    quiet: true,
-    stats: 'minimal' // none (or false), errors-only, minimal, normal (or true) and verbose
+    quiet: false,
+    stats: 'normal' // none (or false), errors-only, minimal, normal (or true) and verbose
   };
 
   return config;
@@ -275,5 +269,5 @@ module.exports = function makeWebpackConfig() {
 // Helper functions
 function root(args) {
   args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
+  return path.join.apply(path, [__dirname + '/../'].concat(args));
 }
