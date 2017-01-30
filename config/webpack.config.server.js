@@ -16,7 +16,7 @@ module.exports = {
   target: "node",
   output: {
     filename: "server.js",
-    path: "build/server",
+    path: "dist/server",
     libraryTarget: "commonjs"
   },
   resolve: {

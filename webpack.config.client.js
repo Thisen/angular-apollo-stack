@@ -57,7 +57,7 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/configuration.html#output
    */
   config.output = isTest ? {} : {
-      path: root('build/client'),
+      path: root('/dist/client'),
       publicPath: isProd ? '/' : 'http://localhost:8080/',
       filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
       chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
@@ -174,6 +174,7 @@ module.exports = function makeWebpackConfig() {
 
     // Tslint configuration for webpack 2
     new webpack.LoaderOptionsPlugin({
+      debug: true,
       options: {
         /**
          * Apply the tslint loader as pre/postLoader
@@ -222,7 +223,7 @@ module.exports = function makeWebpackConfig() {
       // Inject script and link tags into html files
       // Reference: https://github.com/ampedandwired/html-webpack-plugin
       new HtmlWebpackPlugin({
-        template: './client/public/index.html',
+        template: 'client/public/index.html',
         chunksSortMode: 'dependency'
       }),
 
