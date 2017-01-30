@@ -8,4 +8,4 @@ script:
   - npm run build:server
   - npm run build:client
 after_success:
-  -git push master
+  - git push master
