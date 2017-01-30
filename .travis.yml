@@ -3,12 +3,10 @@ node_js:
 - '6.1'
 install:
 - npm install
+- git remote add ssh://$PRODUSER@$SERVERADDR/var/repo/site.git
 services: mongodb
 script:
 - npm run build:server
 - npm run build:client
 after_success:
 - git push master
-env:
-  matrix:
-    secure: Rdmfm36Sk4eF+jk7ioB2w061Rb54S26TvqCpBh7s7hcvVKwa7xwgOULh0++FutobX9bx8o73GwpjMivZj6SdiX0KbK3rmecP8rz9gsDH+8/jlTs31hKOVWOHnL+Dr2i4DXHsmiUTdds5ZeoNBn52Eno+Z3xngvfG6EK8xzyykTsooTdGD4b+VsZPtc0DdJ/MUsTG9K6oedMPtiysChixh0MKqkkbHlotyeWR9D3xqkXWrVTOdlCdSgY7aDcnay3Q7Hl753YPNaXJydBmShbKse5tayYj1a5UJInBACdF80AhHvIp3dQPP2R6OJeuLzHo1rgwaNbj/5SXG//bpBXD8W1aOhL2wwh+6UW8PkhT2w+6f0PcihYVtUv5iIu2pd86i5pLW+o0jAE4zXmv1/yF7d4M2SA3HYPRcnEa5lfr1n7RH++TAnff1YvmSiETxu6/GTHOGk/HIRykrG16G2zQgW8U6+itYTx1ItbZxZF0q87DAHYdtbgDcaOWAPgyD9i4oAWW/tkYkI6+eIyCtMFXzACD5yvAXMQBXxtEbQ2Xp0lRMQyu/WmDsiNDY2YA4t/p6FTz1F4X4+jonOQv0/2nun+TDJUqvVFbWhrlvW0X/c8JvWzKqEdhewbFZsUnMbz7YTLExCayJ/MfssYU6EzveEW1P34PuqXZiIr9Sb6SC1s=
