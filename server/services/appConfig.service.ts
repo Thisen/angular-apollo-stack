@@ -9,7 +9,7 @@ export class AppConfig {
     this.isProduction = process.env.NODE_ENV === 'prod';
     this.isDevelopment = !this.isProduction;
 
-    this.graphQLPort = process.env.PORT || 8080;
+    this.graphQLPort = process.env.PORT || 5000;
 
     if (this.isProduction) {
       this.mongoDbUrl = process.env.MONGO_URL_PROD;
