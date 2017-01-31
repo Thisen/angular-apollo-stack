@@ -3,7 +3,7 @@ node_js:
 - '6.1'
 install:
 - npm install
-- git remote add ssh://$PRODUSER@$SERVERADDR/var/repo/site.git
+- git remote add "ssh://" + $PRODUSER + "@" + $SERVERADDR +"/var/repo/site.git"
 services: mongodb
 script:
 - npm run build:server
