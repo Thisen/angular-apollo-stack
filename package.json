@@ -11,7 +11,9 @@
     "test": "karma start",
     "server": "webpack-dev-server --config ./config/webpack.config.client.js --inline --progress --bail --port 3000",
     "start": "npm run server",
-    "start:hmr": "npm run server -- --hot"
+    "start:hmr": "npm run server -- --hot",
+    "pree2e": "webdriver-manager update --standalone false --gecko false",
+    "e2e": "protractor"
   },
   "repository": {
     "type": "git",
@@ -81,12 +83,14 @@
     "node-sass": "^3.4.2",
     "null-loader": "0.1.1",
     "postcss-loader": "^1.1.0",
+    "protractor": "^4.0.10",
     "raw-loader": "0.5.1",
     "remap-istanbul": "^0.6.4",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.0",
     "ts-helpers": "^1.1.2",
+    "ts-node": "^2.0.0",
     "tslint": "^4.3.1",
     "tslint-loader": "^3.3.0",
     "typescript": "~2.1.5",
