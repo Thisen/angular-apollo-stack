@@ -42,5 +42,9 @@ jspm_packages
 *.launch
 .settings/
 
+# Compiled
 dist
 build
+
+# Enviroment
+.env
