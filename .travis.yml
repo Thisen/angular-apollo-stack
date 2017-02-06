@@ -18,7 +18,7 @@ script:
 - npm run build:server
 after_success:
 - export SSHPASS=$DEPLOY_PASS
-- sshpass -p $DEPLOY_PASS git remote add master $SSHPATH
+- sshpass -e git remote add master $SSHPATH
 - git push master
 env:
   global:
