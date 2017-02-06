@@ -6,10 +6,13 @@ before_install:
 install:
 - npm install
 services: mongodb
+before_script:
+- export SSHPATH=ssh://$PRODUSER@$SERVERADDR/var/repo/site.git
+- echo $SSHPATH
 script:
 - npm run build:server
 - npm run build:client
 after_success:
-- export SSHPATH=ssh://$PRODUSER@SERVERADDR/var/repo/site.git
+
 - git remote add master $SSHPATH
 - git push master
