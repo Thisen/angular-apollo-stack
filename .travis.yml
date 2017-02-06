@@ -9,6 +9,7 @@ services: mongodb
 before_script:
 - export SSHPATH=$PRODUSER@$SERVERADDR:/var/repo/site.git
 - echo $SSHPATH
+
 script:
 - npm run build:server
 - npm run build:client
