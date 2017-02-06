@@ -10,7 +10,6 @@ script:
 - npm run build:server
 - npm run build:client
 after_success:
-- username: $PRODUSER
-- ip: $SERVERADDR
-- git remote add master ssh://username@ip/var/repo/site.git
+- export SSHPATH = ssh://$PRODUSER@SERVERADDR/var/repo/site.git
+- git remote add master SSHPATH
 - git push master
