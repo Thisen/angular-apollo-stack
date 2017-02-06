@@ -16,6 +16,7 @@ before_script:
 - echo $SSHPATH
 script:
 - npm run build:server
+- npm run build:client
 after_success:
 - export SSHPASS=$DEPLOY_PASS
 - sshpass -e git remote add master $SSHPATH
