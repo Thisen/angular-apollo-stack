@@ -12,10 +12,10 @@ install:
 services: mongodb
 before_script:
 - export SSHPATH=$PRODUSER@$SERVERADDR:/var/repo/site.git
+- ssh-keyscan -H $SERVERADDR >> ~/.ssh/known_hosts
 - echo $SSHPATH
 script:
 - npm run build:server
-- npm run build:client
 after_success:
 - export SSHPASS=$DEPLOY_PASS
 - sshpass -p $DEPLOY_PASS git remote add master $SSHPATH
