@@ -9,9 +9,6 @@ services: mongodb
 before_script:
 - export SSHPATH=ssh://$PRODUSER@$SERVERADDR/var/repo/site.git
 - echo $SSHPATH
-- ssh-keygen -t rsa -b 4096 -C 'angular-apollo-stack@travis-ci.org' -f ./deploy_rsa
-- travis encrypt-file deploy_rsa --add
-- ssh-copy-id -i deploy_rsa.pub $PRODUSER@$SERVERADDR
 script:
 - npm run build:server
 - npm run build:client
