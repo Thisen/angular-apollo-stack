@@ -7,7 +7,7 @@ install:
 - npm install
 services: mongodb
 before_script:
-- export SSHPATH=ssh://$PRODUSER@$SERVERADDR/var/repo/site.git
+- export SSHPATH=$PRODUSER@$SERVERADDR:/var/repo/site.git
 - echo $SSHPATH
 script:
 - npm run build:server
