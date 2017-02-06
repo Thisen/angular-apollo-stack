@@ -13,6 +13,5 @@ script:
 - npm run build:server
 - npm run build:client
 after_success:
-- ssh-add .travis/deploy_key.pem
 - git remote add master $SSHPATH
 - git push master
