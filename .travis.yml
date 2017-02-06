@@ -6,7 +6,7 @@ addons:
         packages:
             - sshpass
 before_install:
-- echo $PRODUSER
+
 install:
 - npm install
 services: mongodb
