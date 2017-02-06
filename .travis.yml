@@ -11,9 +11,8 @@ install:
 - npm install
 services: mongodb
 before_script:
-- export SSHPATH=$PRODUSER@$SERVERADDR:/var/repo/site.git
-- ssh-keyscan -H $SERVERADDR >> ~/.ssh/known_hosts
-- echo $SSHPATH
+- export SSHPATH=$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+- ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
 script:
 - npm run build:server
 - npm run build:client
