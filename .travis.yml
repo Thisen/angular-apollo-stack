@@ -11,14 +11,11 @@ install:
 services: mongodb
 before_script:
 - export SSHPATH=$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
-- ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
 script:
 - npm run build:server
-- npm run build:client
 after_success:
 - export SSHPASS=$DEPLOY_PASS
-- sshpass -e git remote add master $SSHPATH
-- sshpass -e git push master
+- ./deploy.sh
 env:
   global:
     secure: Ff+Bcn74/rg8AtorZfNrtubrjTJwq7nQ4Z2YSVMwTp/k7fndT1ykcbMmnaYMyeCwwFPsk6PGmiB20VVONziYxEpwhA9n7S6pKMbaVL2atmlCrtnuIzJsDTAukTzi6R/3kDi2uY71b253JgG2TB++pQitrE4GKSiq1mimQmmQB3meBzQjY5nWyAN8HnnbrJEj+5zl6bQuNVtPXaiy83kcnxXhhNtdoDM+XUF47/gDWBoe+NeT/ywwivLTIo2tavjf4e7IBs78oeY5FqwyCbhuli5yy+TOZ0bsNkMbMm+GvfuK5oj/cToB6gucU3GoOX0aoVDHwr+Grqg7HcCuzMUJvNfHFSP6jpoF8RjvWypK1Shu4UJIBtY4LoHpSCO2Qv4boSTcULE55PRb9hWGGbuaWRRSEdg9Nqum+yT2wniYqEoV/sbpafa/M3/0k5vFv6Fii4pdBb2LzJ28LVa2lOkO+hRx5lS2fEMZTUcpxS1m89sWque8yxoPD9oFplHIBEEy/AI79Z/vh03oIVvzbd9YLTLRgZwwaWFFUOrmg1gO2AaX4m4ArzZKWp7oX55Pw8IEviY+2bMVx6zOcFbG1ZTBbxs0r8XODjZLJ0k6znBczstD3ijmzPxN10zygoe04c+DO701NsUbJRQavfbf4bltC/M3wkHfLbft14vpR0/gjxg=
